@@ -1,0 +1,26 @@
+select{
+    width: 20%;
+    border-radius: 7%;
+    border-color: lightseagreen;
+    margin-left: 30pt;
+}
+select:hover{
+    border-color: blue;
+}
+select:focus{
+    box-shadow: 0 0 0 0.25rem rgb(191, 206, 230);
+}
+button{
+    margin-left: 15pt;
+    background-color: rgb(13, 110, 253);
+    border-radius: 10%;
+    color: white;
+    border-color: rgb(13, 110, 253);
+}
+button:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
