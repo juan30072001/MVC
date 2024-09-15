@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5 cw-60">
+        <div class="card bg-light">
+            <div class="card-header">
+                <h3 class="text-secondary" th:text="${titulo}"></h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-sm table-hover table-bordered"
+                    th:if="${not #lists.isEmpty(productos)}">
+                    <tr>
+                        <th class="text-center">Id</th>
+                        <th>descripcion</th>
+                        <th class="text-center">categoria</th>
+                        <th class="text-center">existencia</th>
+                        <th>precio</th>
+                        <th>ultimo Ingreso</th>
+                        <th>disponible</th>
+                        <th>observacion</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                    <tr th:each="cal : ${productos}">
+                        <td th:text="${cal.id}"></td>
+                        <td th:text="${cal.descripcion}"></td>
+                        <td class="text-center" th:text="${cal.categoria}"></td>
+                        <td class="text-center" th:text="${cal.existencia}"></td>
+                        <td th:text="${cal.precio}"></td>
+                        <td th:text="${cal.ultimoIngreso}"></td>
+                        <td th:text="${cal.disponible}"></td>
+                        <td th:text="${cal.observacion}"></td>
+                        <td class="text-center">
+                            <a th:href="@{/modificar/} + ${cal.id}" class="btn btn-xs btn-warning">Modificar</a>
+                            &nbsp;
+                            <a th:href="@{/eliminar/} + ${cal.id}" class="btn btn-xs btn-danger" onclick="return confirm('seguro de eliminar?')">Eliminar</a>
+                        </td> 
+                    </tr>
+                </table>
+                <div>
+                    <a th:href="@{/productos}" class="btn btn-secondary">Agregar nuevo producto</a>
+                </div>
+                <div class="alert alert-warning text-center" th:if="${#lists.isEmpty(productos)}">
+                    <strong>No!</strong> Hay registros de calificaciones para mostrar.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
